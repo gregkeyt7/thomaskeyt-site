@@ -1,0 +1,94 @@
+<!-- File: blog.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Thomas Keyt</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script defer src="scripts/app.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Thomas Keyt</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="store.html">Store</a></li>
+                    <li><a href="crypto.html">My Crypto</a></li>
+                    <li><a href="resume/ThomasKeyt_Resume.pdf" download>Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main container">
+        <section class="hero blog-hero">
+            <h2>📖 Thomas Keyt’s Blog</h2>
+            <p>From billionaire mindset to fatherhood, faith, and freedom — learn everything I know and live.</p>
+        </section>
+
+        <section class="blog-tags">
+            <button class="tag-filter" data-tag="all">All</button>
+            <button class="tag-filter" data-tag="mindset">Mindset</button>
+            <button class="tag-filter" data-tag="fatherhood">Fatherhood</button>
+            <button class="tag-filter" data-tag="faith">Faith</button>
+        </section>
+
+        <section class="blog-posts-grid">
+            <article class="blog-card" data-tags="mindset">
+                <h3>How I'm Building My Empire</h3>
+                <p class="blog-date">April 2, 2025</p>
+                <p>This is the beginning of something huge. I’m building wealth, health, and knowledge one brick at a
+                    time. Follow this journey to freedom...</p>
+                <a href="posts/how-im-building-my-empire.html" class="read-more">Continue Reading →</a>
+            </article>
+
+            <article class="blog-card" data-tags="fatherhood">
+                <h3>How I Stay Focused As a Dad</h3>
+                <p class="blog-date">March 25, 2025</p>
+                <p>Being a father of two while chasing big dreams is no joke. Here's how I balance business, family, and
+                    spiritual growth.</p>
+                <a href="posts/how-i-stay-focused-as-a-dad.html" class="read-more">Continue Reading →</a>
+            </article>
+
+            <article class="blog-card" data-tags="faith">
+                <h3>Faith Over Fear: My Journey With Christ</h3>
+                <p class="blog-date">March 10, 2025</p>
+                <p>In a world full of chaos and distraction, faith has grounded me. Here’s how I walk by faith every day
+                    as a man, father, and leader.</p>
+                <a href="posts/faith-over-fear.html" class="read-more">Continue Reading →</a>
+            </article>
+        </section>
+
+        <section class="newsletter container">
+            <h2>Never Miss a Post</h2>
+            <p>Get my new posts sent straight to your inbox with lessons, insights, and motivation for life and wealth.
+            </p>
+            <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+
+        <section class="comments-widget container">
+            <h2>💬 Reader Comments</h2>
+            <div id="commentbox"></div>
+            <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+            <script>commentBox('YOUR_COMMENTBOX_PROJECT_ID');</script>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Thomas Keyt. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!-- File: store.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | Thomas Keyt</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Thomas Keyt</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="store.html" class="active">Store</a></li>
+                    <li><a href="crypto.html">My Crypto</a></li>
+                    <li><a href="resume/ThomasKeyt_Resume.pdf" download>Resume</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main container">
+        <section class="hero">
+            <h2>eBook Store</h2>
+            <p>Browse and download powerful books to help you grow in wealth, health, and purpose.</p>
+        </section>
+
+        <section class="store-grid">
+            <div class="product-card">
+                <img src="images/ebook1.jpg" alt="eBook 1 Cover">
+                <h3>Mindset of a Billionaire</h3>
+                <p>Learn how to think, invest, and act like a billionaire from scratch.</p>
+                <a href="ebooks/mindset-of-a-billionaire.pdf" class="buy-btn" download>Free Download</a>
+            </div>
+
+            <div class="product-card">
+                <img src="images/ebook2.jpg" alt="eBook 2 Cover">
+                <h3>The Father, The Builder</h3>
+                <p>How to be a great dad and build your empire at the same time.</p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="YOUR_PAYPAL_BUTTON_ID">
+                    <input type="submit" class="buy-btn" value="Buy for $4.99">
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Thomas Keyt. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
