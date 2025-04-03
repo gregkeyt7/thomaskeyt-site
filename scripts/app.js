@@ -1,52 +1,53 @@
 // File: scripts/app.js
 
-// ===== Smooth Scroll for Navigation Links =====
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+document.addEventListener("DOMContentLoaded", () => {
+  // Highlight active nav link
+  const links = document.querySelectorAll(".nav-links a");
+  const current = location.pathname.split("/").pop();
+  links.forEach(link => {
+    if (link.getAttribute("href") === current) {
+      link.classList.add("active");
     }
   });
-});
 
-// ===== Highlight Active Nav Item Based on Page =====
-const currentPage = window.location.pathname.split("/").pop();
-document.querySelectorAll('.nav-links a').forEach(link => {
-  if (link.getAttribute('href') === currentPage) {
-    link.classList.add('active');
-  } else {
-    link.classList.remove('active');
+  // Smooth scroll for anchor links
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
+
+  // Fade-in effect on scroll
+  const faders = document.querySelectorAll('.fade-in, .highlight, .blog-card, .newsletter');
+  const options = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('fade-in');
+      observer.unobserve(entry.target);
+    });
+  }, options);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+
+  // Animate hero section on page load
+  const heroSection = document.querySelector(".hero");
+  if (heroSection) {
+    setTimeout(() => {
+      heroSection.classList.add("fade-in");
+    }, 300);
   }
 });
 
-// ===== Show Alert on Resume Download =====
-const resumeLink = document.querySelector('a[href*="resume"]');
-if (resumeLink) {
-  resumeLink.addEventListener('click', () => {
-    alert("Downloading Resume - Thank you for your interest!");
-  });
-}
-
-// ===== Store Buy Button Animation =====
-document.querySelectorAll('.buy-btn').forEach(button => {
-  button.addEventListener('mouseenter', () => {
-    button.style.transform = 'scale(1.05)';
-  });
-  button.addEventListener('mouseleave', () => {
-    button.style.transform = 'scale(1)';
-  });
-});
-
-// ===== Easter Egg: Konami Code Unlocks Hidden Message =====
-const secretCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
-let inputSequence = [];
-
-document.addEventListener('keydown', function(e) {
-  inputSequence.push(e.key);
-  if (inputSequence.slice(-10).toString() === secretCode.toString()) {
-    alert("You've unlocked a secret! Keep building the future.");
-    inputSequence = [];
-  }
-});

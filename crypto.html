@@ -1,12 +1,295 @@
-<!-- File: crypto.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Crypto | Thomas Keyt</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+        }
+
+        .header {
+            background-color: #111827;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .main.container {
+            padding-top: 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.25rem;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #38bdf8;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            color: white;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-radius: 1rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .hero .bg-animation {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03), transparent 70%);
+            animation: rotateBackground 20s linear infinite;
+            z-index: 0;
+        }
+
+        .hero h2,
+        .hero p {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes rotateBackground {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-section {
+            margin-top: 4rem;
+            margin-bottom: 3rem;
+            padding: 4rem 2rem;
+            border-radius: 1.25rem;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+            animation: fadeInHero 1s ease-out forwards;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(rgba(255, 255, 255, 0.03), transparent 70%);
+            top: -25%;
+            left: -25%;
+            animation: rotateGlow 20s linear infinite;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .highlight {
+            color: #38bdf8;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInHero {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3b82f6;
+            color: white;
+            font-weight: 600;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .cta-btn.secondary {
+            background-color: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+
+
+        .crypto-info {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .crypto-details {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .crypto-details h3 {
+            margin-top: 1.5rem;
+            color: #1e3a8a;
+        }
+
+        .contract-address {
+            background-color: #f3f4f6;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copy-btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.75rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .crypto-details ul,
+        .crypto-details ol {
+            padding-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
+
+        .crypto-details a {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .token-utility,
+        .tokenomics,
+        .whitepaper-roadmap {
+            background-color: white;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .tokenomics ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tokenomics li {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .whitepaper-roadmap .doc-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #111827;
+            color: #e5e7eb;
+            margin-top: 4rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .crypto-info {
+                padding: 0 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,17 +302,23 @@
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="store.html">Store</a></li>
                     <li><a href="crypto.html" class="active">My Crypto</a></li>
-                    <li><a href="resume/ThomasKeyt_Resume.pdf" download>Resume</a></li>
+                    <li><a href="F:\thomaskeyt-website\resume\Thomas_Keyt_Resume_2025.pdf" download>Resume</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="main container">
-        <section class="hero">
-            <h2>My Cryptocurrency</h2>
-            <p>Welcome to the future. My token is here to give power and profit back to the people.</p>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>🚀 Welcome to <span class="highlight">KEYT COIN</span></h2>
+                <p><strong>💰 My Crypto Portfolio</strong></p>
+                <p>The future is here. This token puts financial freedom and opportunity back into the hands of the
+                    people.</p>
+            </div>
         </section>
+
+
 
         <section class="crypto-info">
             <div class="crypto-details">
@@ -40,24 +329,63 @@
                 <p><strong>KEYT</strong></p>
 
                 <h3>Smart Contract Address:</h3>
-                <p class="contract-address">0x1234567890ABCDEF1234567890ABCDEF12345678</p>
+                <div class="contract-address">
+                    <span id="contract">0x1234567890ABCDEF1234567890ABCDEF12345678</span>
+                    <button class="copy-btn" onclick="copyAddress()">Copy</button>
+                </div>
 
                 <h3>Where to Buy:</h3>
                 <ul>
-                    <li>🔗 <a href="https://www.pancakeswap.finance/" target="_blank" rel="noopener">PancakeSwap</a></li>
-                    <li>🔗 <a href="https://metamask.io/" target="_blank" rel="noopener">MetaMask Wallet</a></li>
+                    <li>🔗 <a href="https://www.pancakeswap.finance/" target="_blank" rel="noopener">Buy on
+                            PancakeSwap</a></li>
+                    <li>🔗 <a href="https://metamask.io/" target="_blank" rel="noopener">Get MetaMask Wallet</a></li>
                 </ul>
 
                 <h3>How to Buy:</h3>
                 <ol>
-                    <li>Install MetaMask</li>
-                    <li>Send BNB to your wallet</li>
-                    <li>Go to PancakeSwap</li>
-                    <li>Paste the KEYT smart contract address</li>
-                    <li>Swap BNB for KEYT</li>
+                    <li>Install MetaMask browser extension or mobile app</li>
+                    <li>Buy and send BNB to your MetaMask wallet</li>
+                    <li>Go to PancakeSwap and connect your wallet</li>
+                    <li>Paste the contract address: <strong>KEYT</strong></li>
+                    <li>Swap BNB for KEYT and confirm</li>
                 </ol>
             </div>
         </section>
+
+        <!-- Token Utility Section -->
+        <section class="token-utility container">
+            <h2>🔑 What KEYT Coin Does</h2>
+            <p>
+                KEYT Coin isn't just another token — it's a tool for financial freedom. From access to exclusive content
+                and
+                platforms (like Arion) to community-backed wealth generation, KEYT Coin fuels the ecosystem we're
+                building for
+                the next 100 years.
+            </p>
+        </section>
+
+        <!-- Tokenomics Section -->
+        <section class="tokenomics container">
+            <h2>📊 Tokenomics</h2>
+            <ul>
+                <li><strong>Total Supply:</strong> 1,000,000,000 KEYT</li>
+                <li><strong>Public Sale:</strong> 40%</li>
+                <li><strong>Team & Founders:</strong> 15%</li>
+                <li><strong>Liquidity Pool:</strong> 25%</li>
+                <li><strong>Marketing & Airdrops:</strong> 10%</li>
+                <li><strong>Future Development:</strong> 10%</li>
+            </ul>
+        </section>
+
+        <!-- Whitepaper & Roadmap -->
+        <section class="whitepaper-roadmap container">
+            <h2>📄 Documentation</h2>
+            <div class="doc-buttons">
+                <a href="docs/KEYT_Whitepaper.pdf" class="cta-btn" target="_blank">📘 View Whitepaper</a>
+                <a href="docs/KEYT_Roadmap.pdf" class="cta-btn secondary" target="_blank">🛣️ View Roadmap</a>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">
@@ -65,6 +393,15 @@
             <p>&copy; 2025 Thomas Keyt. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function copyAddress() {
+            const address = document.getElementById("contract").innerText;
+            navigator.clipboard.writeText(address).then(() => {
+                alert("Contract address copied to clipboard!");
+            });
+        }
+    </script>
 </body>
 
 </html>

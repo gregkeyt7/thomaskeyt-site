@@ -1,4 +1,3 @@
-<!-- File: blog.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +8,85 @@
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script defer src="scripts/app.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+        }
+
+        .blog-hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(to right, #3b82f6, #6366f1);
+            color: white;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-tags {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .tag-filter {
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border: none;
+            border-radius: 999px;
+            background-color: #e5e7eb;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .tag-filter:hover,
+        .tag-filter.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 1rem;
+        }
+
+        .blog-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card h3 {
+            margin-top: 0;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #3b82f6;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .newsletter,
+        .comments-widget {
+            margin-top: 4rem;
+            padding: 2rem 1rem;
+            background-color: #f1f5f9;
+            border-radius: 1rem;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,7 +99,7 @@
                     <li><a href="blog.html" class="active">Blog</a></li>
                     <li><a href="store.html">Store</a></li>
                     <li><a href="crypto.html">My Crypto</a></li>
-                    <li><a href="resume/ThomasKeyt_Resume.pdf" download>Resume</a></li>
+                    <li><a href="F:\thomaskeyt-website\resume\Thomas_Keyt_Resume_2025.pdf" download>Resume</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +112,7 @@
         </section>
 
         <section class="blog-tags">
-            <button class="tag-filter" data-tag="all">All</button>
+            <button class="tag-filter active" data-tag="all">All</button>
             <button class="tag-filter" data-tag="mindset">Mindset</button>
             <button class="tag-filter" data-tag="fatherhood">Fatherhood</button>
             <button class="tag-filter" data-tag="faith">Faith</button>
@@ -78,9 +156,9 @@
 
         <section class="comments-widget container">
             <h2>💬 Reader Comments</h2>
-            <div id="commentbox"></div>
+            <div class="commentbox"></div>
             <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
-            <script>commentBox('YOUR_COMMENTBOX_PROJECT_ID');</script>
+            <script>commentBox('5696251538440192-proj')</script>
         </section>
     </main>
 
@@ -89,6 +167,31 @@
             <p>&copy; 2025 Thomas Keyt. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterButtons = document.querySelectorAll(".tag-filter");
+            const blogCards = document.querySelectorAll(".blog-card");
+
+            filterButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const tag = button.dataset.tag;
+
+                    filterButtons.forEach(btn => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    blogCards.forEach(card => {
+                        const tags = card.dataset.tags;
+                        if (tag === "all" || tags.includes(tag)) {
+                            card.style.display = "block";
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
